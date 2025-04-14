@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KissanBazaar Agricultural AI Assistant</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { 
+            background-color: #f4f6f9; 
+            padding-top: 50px;
+        }
+        .result-box {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-5">KissanBazaar Agricultural AI Assistant</h1>
+        
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <!-- Soil Analysis Form -->
+                <div class="card mb-4">
+                    <div class="card-header">Soil Analysis</div>
+                    <div class="card-body">
+                        <form id="soilForm">
+                            <div class="mb-3">
+                                <label class="form-label">Soil Type</label>
+                                <input type="text" class="form-control" name="soil_type" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">pH Level</label>
+                                <input type="number" step="0.1" class="form-control" name="ph_level" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Nutrients</label>
+                                <textarea class="form-control" name="nutrients" rows="2" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Analyze Soil</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Crop Recommendations Form -->
+                <div class="card mb-4">
+                    <div class="card-header">Crop Recommendations</div>
+                    <div class="card-body">
+                        <form id="cropForm">
+                            <div class="mb-3">
+                                <label class="form-label">Location</label>
+                                <input type="text" class="form-control" name="location" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Season</label>
+                                <select class="form-control" name="season" required>
+                                    <option value="Kharif">Kharif</option>
+                                    <option value="Rabi">Rabi</option>
+                                    <option value="Zaid">Zaid</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Soil Type</label>
+                                <input type="text" class="form-control" name="soil_type" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Rainfall (mm)</label>
+                                <input type="number" class="form-control" name="rainfall" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Temperature (°C)</label>
+                                <input type="number" class="form-control" name="temperature" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Get Recommendations</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Pest Management Form -->
+                <div class="card mb-4">
+                    <div class="card-header">Pest Management</div>
+                    <div class="card-body">
+                        <form id="pestForm">
+                            <div class="mb-3">
+                                <label class="form-label">Crop Type</label>
+                                <input type="text" class="form-control" name="crop_type" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Pest Type</label>
+                                <input type="text" class="form-control" name="pest_type" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Severity</label>
+                                <select class="form-control" name="severity" required>
+                                    <option value="Low">Low</option>
+                                    <option value="Medium">Medium</option>
+                                    <option value="High">High</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Get Pest Management Plan</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Result Sections -->
+                <div id="soilResult" class="result-box"></div>
+                <div id="cropResult" class="result-box"></div>
+                <div id="pestResult" class="result-box"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            function handleFormSubmission(formId, resultId, apiEndpoint) {
+                const form = document.getElementById(formId);
+                const resultBox = document.getElementById(resultId);
+
+                form.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    resultBox.style.display = "block";
+                    resultBox.innerHTML = '<p class="text-center"><strong>Processing...</strong></p>';
+                    
+                    const formData = new FormData(form);
+                    const jsonData = Object.fromEntries(formData.entries());
+
+                    try {
+                        const response = await fetch(`http://localhost:8001/${apiEndpoint}`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(jsonData)
+                        });
+
+                        if (!response.ok) throw new Error("Server error, please try again.");
+                        
+                        const data = await response.json();
+                        resultBox.innerHTML = formatAnalysisResult(data.analysis || data.recommendations || data.management_plan);
+                    } catch (error) {
+                        resultBox.innerHTML = `<p class="text-danger">Error: ${error.message}</p>`;
+                    }
+                });
+            }
+
+            function formatAnalysisResult(text) {
+                if (!text) return '<p class="text-danger">No results received.</p>';
+                
+                let formatted = text.replace(/\n\n/g, '</p><p>').replace(/\n/g, '<br>');
+                formatted = `<p>${formatted}</p>`;
+                
+                formatted = formatted.replace(/(\d+\.\s+.*?)<br>/g, '<li>$1</li>');
+                formatted = formatted.replace(/(<li>.*?<\/li>)+/g, '<ol>$&</ol>');
+
+                formatted = formatted.replace(/(Soil quality|Recommended crops|Soil treatments|Management practices|Market potential|Pest control|Irrigation|Return on investment)/g, '<strong>$1</strong>');
+                
+                return formatted;
+            }
+
+            handleFormSubmission('soilForm', 'soilResult', 'analyze_soil');
+            handleFormSubmission('cropForm', 'cropResult', 'recommend_crops');
+            handleFormSubmission('pestForm', 'pestResult', 'pest_management');
+        });
+    </script>
+</body>
+</html>
