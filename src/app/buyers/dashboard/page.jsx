@@ -92,6 +92,32 @@ const BuyerDashboard = () => {
               <p className="text-gray-700">View your farm statistics and performance metrics here.</p>
               {/* Display charts or stats */}
             </div>
+            <div class="grid-container">
+  <div class="card weather">
+    <h4>🌦️ Weather Forecast</h4>
+    <p>Get real-time and daily weather updates.</p>
+    <a href="/weather">Check Weather →</a>
+  </div>
+
+  <div class="card crop">
+    <h4>🌱 Crop Recommendation</h4>
+    <p>Find the best crops to grow based on your soil and season.</p>
+    <a href="/crop-recommendation">Get Recommendations →</a>
+  </div>
+
+  <div class="card disease">
+    <h4>🧬 Disease Prediction</h4>
+    <p>Detect potential plant diseases using AI insights.</p>
+    <a href="/plant-disease">Predict Now →</a>
+  </div>
+
+  <div class="card guide">
+    <h4>📘 Farming Guidance</h4>
+    <p>Get step-by-step advice for better agricultural practices.</p>
+    <a href="/farming-guidance">Get Guidance →</a>
+  </div>
+</div>
+
           </div>
         </main>
       </div>
