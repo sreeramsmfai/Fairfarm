@@ -92,6 +92,32 @@ const FarmerDashboard = () => {
               <p className="text-gray-700">View your farm statistics and performance metrics here.</p>
               {/* Display charts or stats */}
             </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="bg-gray-100 p-4 rounded-lg shadow hover:shadow-md transition">
+        <h4 className="font-semibold text-gray-800 mb-1">Weather Forecast</h4>
+        <p className="text-sm text-gray-600 mb-2">Get real-time and weekly weather updates.</p>
+        <a href="https://agrisens.netlify.app/weather-forecast/" className="text-blue-500 text-sm hover:underline">Check Weather</a>
+      </div>
+
+      <div className="bg-gray-100 p-4 rounded-lg shadow hover:shadow-md transition">
+        <h4 className="font-semibold text-gray-800 mb-1">Crop Recommendation</h4>
+        <p className="text-sm text-gray-600 mb-2">Find the best crops to grow based on your soil and season.</p>
+        <a href="https://crop-recomm.streamlit.app/" className="text-blue-500 text-sm hover:underline">Get Recommendations</a>
+      </div>
+
+      <div className="bg-gray-100 p-4 rounded-lg shadow hover:shadow-md transition">
+        <h4 className="font-semibold text-gray-800 mb-1">Disease Prediction</h4>
+        <p className="text-sm text-gray-600 mb-2">Detect potential plant diseases using AI insights.</p>
+        <a href="https://agrisens-crop-disease-pred.streamlit.app/" className="text-blue-500 text-sm hover:underline">Predict Now</a>
+      </div>
+
+      <div className="bg-gray-100 p-4 rounded-lg shadow hover:shadow-md transition">
+        <h4 className="font-semibold text-gray-800 mb-1">Farming Guidance</h4>
+        <p className="text-sm text-gray-600 mb-2">Get step-by-step advice for better agricultural practices.</p>
+        <a href="https://agrisens.netlify.app/guide/" className="text-blue-500 text-sm hover:underline">Get Guidance</a>
+      </div>
+    </div>
           </div>
         </main>
       </div>
