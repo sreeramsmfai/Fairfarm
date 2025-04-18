@@ -93,32 +93,92 @@ const FarmerDashboard = () => {
               {/* Display charts or stats */}
             </div>
            
-      <div class="grid-container">
-  <div class="card weather">
-    <h4>🌦️ Weather Forecast</h4>
-    <p>Get real-time and daily weather updates.</p>
-    <a href="/weather">Check Weather →</a>
-  </div>
+   <div className="grid-container">
+      <div className="card weather">
+        <h4>🌦️ Weather Forecast</h4>
+        <p>Get real-time and daily weather updates.</p>
+        <a href="https://agrisens.netlify.app/weather-forecast/">Check Weather →</a>
+      </div>
 
-  <div class="card crop">
-    <h4>🌱 Crop Recommendation</h4>
-    <p>Find the best crops to grow based on your soil and season.</p>
-    <a href="/crop-recommendation">Get Recommendations →</a>
-  </div>
+      <div className="card crop">
+        <h4>🌱 Crop Recommendation</h4>
+        <p>Find the best crops to grow based on your soil and season.</p>
+        <a href="https://crop-recomm.streamlit.app/">Get Recommendations →</a>
+      </div>
 
-  <div class="card disease">
-    <h4>🧬 Disease Prediction</h4>
-    <p>Detect potential plant diseases using AI insights.</p>
-    <a href="/plant-disease">Predict Now →</a>
-  </div>
+      <div className="card disease">
+        <h4>🧬 Disease Prediction</h4>
+        <p>Detect potential plant diseases using AI insights.</p>
+        <a href="https://agrisens-crop-disease-pred.streamlit.app/">Predict Now →</a>
+      </div>
 
-  <div class="card guide">
-    <h4>📘 Farming Guidance</h4>
-    <p>Get step-by-step advice for better agricultural practices.</p>
-    <a href="/farming-guidance">Get Guidance →</a>
-  </div>
-</div>
+      <div className="card guide">
+        <h4>📘 Farming Guidance</h4>
+        <p>Get step-by-step advice for better agricultural practices.</p>
+        <a href="https://agrisens.netlify.app/guide/">Get Guidance →</a>
+      </div>
 
+      <style jsx>{`
+        .grid-container {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 1rem;
+          margin: 2rem 0;
+        }
+
+        .card {
+          background: #f5f5f5;
+          padding: 1.2rem;
+          border-radius: 12px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          transition: all 0.3s ease;
+        }
+
+        .card:hover {
+          transform: scale(1.03);
+          box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h4 {
+          margin-bottom: 0.5rem;
+          font-size: 1.1rem;
+          color: #333;
+        }
+
+        .card p {
+          font-size: 0.9rem;
+          color: #555;
+          margin-bottom: 0.75rem;
+        }
+
+        .card a {
+          color: #0077cc;
+          font-size: 0.9rem;
+          text-decoration: none;
+        }
+
+        .card a:hover {
+          text-decoration: underline;
+        }
+
+        /* Color accents */
+        .weather {
+          background: #e0f2fe;
+        }
+
+        .crop {
+          background: #e6f4ea;
+        }
+
+        .disease {
+          background: #fce7e9;
+        }
+
+        .guide {
+          background: #fef9c3;
+        }
+      `}</style>
+    </div>
     </div>
          
         </main>
