@@ -150,31 +150,8 @@ function Header() {
 
               </>
             )}
-            <li>
-                <a href="https://crop-recomm.streamlit.app/"
-               target="_blank"
-                      rel="noopener noreferrer"
-                   className="flex items-center hover:text-yellow-300 hover:underline hover:scale-105 transition-all duration-300 ease-in-out gap-2"
-                  >
-    Crop Reccomend
-  </a>
-</li>
-<li>
-                <a href="https://agrisens.netlify.app/guide/"
-               target="_blank"
-                      rel="noopener noreferrer"
-                   className="flex items-center hover:text-yellow-300 hover:underline hover:scale-105 transition-all duration-300 ease-in-out gap-2"
-                  >
-     Crop Guide
-  </a>
-   <a href="https://agrisens-crop-disease-pred.streamlit.app/"
-               target="_blank"
-                      rel="noopener noreferrer"
-                   className="flex items-center hover:text-yellow-300 hover:underline hover:scale-105 transition-all duration-300 ease-in-out gap-2"
-                  >
-     Crop Disease
-  </a>
-</li>
+            
+
           </ul>
         </nav>
 
@@ -241,36 +218,8 @@ function Header() {
                 </>
               )
               }
-              <li>
-      <a
-        href="https://crop-recomm.streamlit.app/"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex items-center hover:text-yellow-300 hover:underline hover:scale-105 transition-all duration-300 ease-in-out gap-2"
-      >
-        AI Assistant
-      </a>
-    </li>
-    <li>
-      <a
-        href="https://agrisens-crop-disease-pred.streamlit.app/"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex items-center hover:text-yellow-300 hover:underline hover:scale-105 transition-all duration-300 ease-in-out gap-2"
-      >
-        Predict Crop Disease
-      </a>
-    </li>
-    <li>
-      <a
-        href="https://crop-recomm.streamlit.app/"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex items-center hover:text-yellow-300 hover:underline hover:scale-105 transition-all duration-300 ease-in-out gap-2"
-      >
-        Crop Reccomend
-      </a>
-    </li>
+             
+   
             </ul>
           </div>
         </div>
