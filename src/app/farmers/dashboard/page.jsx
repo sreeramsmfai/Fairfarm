@@ -92,8 +92,7 @@ const FarmerDashboard = () => {
               <p className="text-gray-700">View your farm statistics and performance metrics here.</p>
               {/* Display charts or stats */}
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+           
       <div className="bg-gray-100 p-4 rounded-lg shadow hover:shadow-md transition">
         <h4 className="font-semibold text-gray-800 mb-1">Weather Forecast</h4>
         <p className="text-sm text-gray-600 mb-2">Get real-time and weekly weather updates.</p>
@@ -118,7 +117,7 @@ const FarmerDashboard = () => {
         <a href="https://agrisens.netlify.app/guide/" className="text-blue-500 text-sm hover:underline">Get Guidance</a>
       </div>
     </div>
-          </div>
+         
         </main>
       </div>
     </div>
